@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  db-paidify:
+    image: mysql:8.0
+    container_name: db-paidify
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "${PORT}:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./data:/var/lib/mysql
